@@ -17,8 +17,6 @@ namespace RIPHeros
         static void Main(string[] args)
         {
             dealArgs(args);
-            inputFile = "t.jpg";
-            outputFile = "t.png";
             Bitmap img = null;
             try
             {
