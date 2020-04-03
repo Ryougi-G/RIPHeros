@@ -6,3 +6,4 @@
  使用方法:    
  RIPHeros.exe I输出文件名 O输入文件名 F输出格式（大小写无影响）  
  e.g,:RIPHeros.exe Itest1.png Otest2.jpg Fjpg  
+ [下载地址](https://github.com/Ryougi-G/RIPHeros/releases)
