@@ -1,5 +1,5 @@
 # RIPHeros
- R.I.P. 
+ R.I.P.  
  这个项目是为了悼念在抗击COVID-19疫情期间牺牲的英雄而开发  
  可以将图片转为灰度图，表示哀悼  
  目前支持jpg（jpeg），png，ico，tiff，bmp  
