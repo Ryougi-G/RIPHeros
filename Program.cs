@@ -14,6 +14,7 @@ namespace RIPHeros
         static string outputFile = null;
         static ImageFormat Format = ImageFormat.Png;
         static string sFormat = "png";
+        static bool justConvert = false;
         static void Main(string[] args)
         {
             dealArgs(args);
@@ -28,20 +29,32 @@ namespace RIPHeros
                 Console.Write(e.ToString());
                 Environment.Exit(1);
             }
-            int w = img.Width;
-            int h = img.Height;
-            for(int i = 0; i < w; i++)
+            if (!justConvert)
             {
-                for(int j = 0; j < h; j++)
+                try
                 {
-                    double r = img.GetPixel(i, j).R;
-                    double g = img.GetPixel(i, j).G;
-                    double b = img.GetPixel(i, j).B;
-                    double gray = (r*0.299+g*0.587+b*0.114);
-                    int Gray = (int)gray;
-                    img.SetPixel(i, j, Color.FromArgb(Gray, Gray, Gray));
+                    int w = img.Width;
+                    int h = img.Height;
+                    for(int i = 0; i < w; i++)
+                    {
+                        for(int j = 0; j < h; j++)
+                        {
+                            double r = img.GetPixel(i, j).R;
+                            double g = img.GetPixel(i, j).G;
+                            double b = img.GetPixel(i, j).B;
+                            double gray = (r*0.299+g*0.587+b*0.114);
+                            int Gray = (int)gray;
+                            img.SetPixel(i, j, Color.FromArgb(Gray, Gray, Gray));
+                        }
+                    }
+                }catch(Exception e)
+                {
+                    Console.WriteLine("Oops,there is an error.");
+                    Console.Write(e.ToString());
+                    Environment.Exit(1);
                 }
             }
+            
             try
             {
                 img.Save(outputFile, Format);
@@ -71,6 +84,10 @@ namespace RIPHeros
                     {
                         inputFile += c;
                     }
+                }
+                else if (arg[0] == 'C')
+                {
+                    justConvert = true;
                 }
                 else if (arg[0] == 'F')
                 {
